@@ -1,0 +1,9 @@
+<% @posts.each do |post| %>
+<div>
+  <%= link_to post_path(post.id) do %>
+    <%= attachment_image_tag post, :image %>
+    <p>説明：<%= post.contents %></p>
+    <p>ユーザーネーム：<%= post.user.name %></p>
+  <% end %>
+</div>
+<% end %>
