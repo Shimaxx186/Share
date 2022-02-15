@@ -2,7 +2,25 @@
   <% if user_signed_in? && @user == current_user %>
     <h1>マイページ</h1>
   <% else %>
-    <h2><%= @user.name %>さんのページ</h2>
+    <h1><%= @user.name %>さんのページ</h1>
   <% end %>
 </div>
 
+<% if user_signed_in? && @user == current_user %>
+ <p>
+   <%= link_to "プロフィール編集", edit_user_path(@user) %>
+ </p>
+ <% end %>
+ <div>
+   <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
+   <h4><%= @user.introduction %></h4>
+ </div>
+
+<div>
+  <% if user_signed_in? && @user == current_user %>
+    <p>投稿一覧</p>
+  <% else %>
+    <p><%= @user.name %>さんの投稿一覧</p>
+  <% end %>
+  <%= render "posts/list", posts: @posts %>
+</div>
