@@ -1,0 +1,10 @@
+
+<%= form_with url: search_path, local: true, method: :get do |form| %>
+  <%= form.text_field :search, placeholder: "投稿を検索する" %>
+  <%= form.submit "検索"%>
+<% end %>
+
+<div>
+    <% posts.each do |post| %>
+     <%= render "posts/list", posts: @posts %>
+</div>
