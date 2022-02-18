@@ -1,38 +1,27 @@
-<div>
+<div class="form">
   <%= attachment_image_tag @post, :image %>
   <p>説明：<%= @post.contents %></p>
   <p>ユーザーネーム：<%= @post.user.name %></p>
   <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
   <span class="name">
     <a href="/users/<%= @post.user.id %>">
-      <span>投稿者</span><%= @post.user.name %>
+      <span>投稿者</span><%= @post.user.name %></br> 
     </a>
   </span>
   <% if @post.user == current_user %>
     <%= link_to '編集', edit_post_path(@post.id), method: :get %>
     <%= link_to "削除", post_path(@post), method: :delete %>
   <% end %>
-  
-  <% if @post.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+
+  <%= render "favorites/like", post: @post %>
 </div>
 
 <div>
   <p>コメント件数：<%= @post.comments.count %></p>
   <% @post.comments.each do |comment| %>
   <%= comment.user.name %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <%= comment.created_at.strftime('%Y/%m/%d') %> </br>
+  <%= comment.comment %>
     <% if comment.user == current_user %>
       <div>
         <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>

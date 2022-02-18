@@ -1,15 +1,5 @@
-<h1>投稿フォーム</h1>
 
-  <%= form_with model: @post, local: true do |f| %>
+<h1 class ="post_index">投稿フォーム</h1>
 
-    <h4>内容</h4>
-    <%= f.text_area :contents, placeholder:"好きなことを発信しよう" %>
+  <%= render "form", post: @post %>
 
-    <h4>画像</h4>
-    <%= f.attachment_field :image %>
-
-    <%= f.submit '投稿' %>
-
-  <% end %>
-  
-  <%= link_to "top", root_path %>

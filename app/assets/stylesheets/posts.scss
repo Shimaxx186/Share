@@ -15,3 +15,21 @@
 .current {
   font-weight: bold;
 }
+
+.post_index {
+  text-align: center;
+}
+
+.post-top {
+    text-align: center;
+    display: flex;
+
+  &__list {
+    margin: 0 auto;
+  }
+}
+
+.pagenate {
+  text-align: center;
+  margin: 0 auto;
+}

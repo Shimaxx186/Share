@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+#notice {
+  color: green;
+}
+
+#error_explanation {
+  color: red;
+}
+
+header {
+  padding: 15px 0;
+  margin: 0 auto;
+  background-color: black;
+  text-align: center;
+
+  .heading{
+    color: yellow;
+  }
+}
+
+nav {
+  .nav-list {
+    text-align: center;
+    padding: 10px 0;
+    margin: 0 auto;
+
+    .nav-list-item {
+      list-style: none;
+      display: inline-block;
+      margin: 0 20px;
+    }
+  }
+}
