@@ -49,3 +49,35 @@ nav {
     }
   }
 }
+
+// Login-page
+.contner {
+  text-align: center;
+  
+  &__field {
+    margin-bottom: 10px;
+  }
+}
+.button-login {
+  display       : inline-block;
+  border-radius : 20%;          /* 角丸       */
+  font-size     : 15pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #00F;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  border        : 2px solid #000000;    /* 枠の指定 */
+}
+
+.button-signup {
+  display       : inline-block;
+  border-radius : 20%;          /* 角丸       */
+  font-size     : 15pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #0F0;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  border        : 2px solid #000000;    /* 枠の指定 */
+}

@@ -16,7 +16,7 @@
   font-weight: bold;
 }
 
-.post_index {
+.post-index {
   text-align: center;
 }
 
@@ -31,5 +31,33 @@
 
 .pagenate {
   text-align: center;
-  margin: 0 auto;
+  margin-bottom: 25px;
+  
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+.form-bottom {
+  text-align: center;
+}
+
+.post-contents {
+  display: flex;
+  justify-content: center;
+  
+  &__show {
+    text-align: center;
+    padding-right: 50px;
+  }
+  
+  &__comment {
+    margin-left: 50px;
+  }
+}
+
+.post-back {
+  text-align: center;
 }

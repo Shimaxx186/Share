@@ -10,6 +10,8 @@
         </td>
         <td><%= link_to post.user.name, user_path(post.user) %></td>
         <td><%= link_to post.contents, post_path(post.id) %></td>
+      </tr>
+      <tr>
         <td><% if post.user == current_user %>
             <%= link_to '編集', edit_post_path(post.id), method: :get %>
             <%= link_to "削除", post_path(post), method: :delete %>

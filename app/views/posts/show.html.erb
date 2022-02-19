@@ -1,38 +1,50 @@
-<div class="form">
-  <%= attachment_image_tag @post, :image %>
-  <p>説明：<%= @post.contents %></p>
-  <p>ユーザーネーム：<%= @post.user.name %></p>
-  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <span class="name">
-    <a href="/users/<%= @post.user.id %>">
-      <span>投稿者</span><%= @post.user.name %></br> 
-    </a>
-  </span>
-  <% if @post.user == current_user %>
-    <%= link_to '編集', edit_post_path(@post.id), method: :get %>
-    <%= link_to "削除", post_path(@post), method: :delete %>
-  <% end %>
-
-  <%= render "favorites/like", post: @post %>
-</div>
-
-<div>
-  <p>コメント件数：<%= @post.comments.count %></p>
-  <% @post.comments.each do |comment| %>
-  <%= comment.user.name %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %> </br>
-  <%= comment.comment %>
-    <% if comment.user == current_user %>
+<h1 class="post-index">投稿詳細</h1>
+  <div class ="post-contents">
+    <div class ="post-contents__show">
       <div>
-        <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+        <%= link_to user_path(@post.user) do %>
+        <%= attachment_image_tag(@post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+        <% end %>
+        <%= link_to @post.user.name, user_path(@post.user) %>
       </div>
+      <div><%= @post.contents %></div>
+      <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+      <span>
+        <% if @post.user == current_user %>
+        <%= link_to '編集', edit_post_path(@post.id), method: :get %>
+        <%= link_to "削除", post_path(@post), method: :delete %>
+        <% end %>
+      </span>
+        <%= render "favorites/like", post: @post %>
+        <div>
+          <%= attachment_image_tag @post, :image %>
+        </div>
+    </div>
+  
+    <div class ="post-contents__comment">
+      <p>コメント件数：<%= @post.comments.count %></p>
+      <% @post.comments.each do |comment| %>
+        <div>
+          <%= link_to user_path(@post.user) do %>
+          <%= attachment_image_tag(@post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+          <% end %>
+          <%= link_to @post.user.name, user_path(@post.user) %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %> </br>
+        </div>
+      <div>
+        <%= comment.comment %>
+      </div>
+      <span>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+        <% end %>
+      </span>
     <% end %>
-  <% end %>
-</div>
-
-<div>
-  <%= form_with(model:[@post, @comment], local: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
+    
+      <%= form_with model:[@post, @comment], local: true do |f| %>
+        <%= f.text_area :comment, placeholder: "コメントをここに", size: "40x5" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+      
+    </div>
+  </div>
