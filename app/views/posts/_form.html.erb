@@ -12,8 +12,55 @@
 
     <div class= "form-group">
       <h3 class ="form-group__text">住所</h3>
-       <%= f.text_field :address %>
-    </div>
+       <%= f.text_field :address, placeholder:"おすすめスポット", class: "post_contens", size: "40x10" %>
+       <div class="form-group">
+        <!-- buttonをクリックしたらcodeAddressを実行　-->
+        <input type="button" value="検索" onclick="codeAddress()">
+        
+        <script type="text/javascript">
+          let map
+          let geocoder
+          function initMap(){
+            // geocoderを初期化
+            geocoder = new google.maps.Geocoder()
+          
+            map = new google.maps.Map(document.getElementById('map'), { 
+            center: {lat: 35.682022, lng: 139.767884},
+            zoom: 12
+            });
+          }
+          
+          function codeAddress(){
+            // 入力を取得
+            let inputAddress = document.getElementById('post_address').value;
+          
+            // geocodingしたあとmapを移動
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+              if (status == 'OK') {
+          　　　　　// map.setCenterで地図が移動
+                map.setCenter(results[0].geometry.location);
+          
+          　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+              } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+              }
+            });
+          }
+             </script>
+             <script async defer
+                       src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+             </script>
+             <style type="text/css">
+               #map { height: 250px;
+                     width: 150%;}
+             </style>
+           <div id="map"></div>
+   
+   </div class ="">
       <%= f.submit "送信" %>
   </div>
 <% end %>
