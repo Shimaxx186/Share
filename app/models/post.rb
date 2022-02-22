@@ -12,13 +12,15 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
   
-  def self.search(search)
+  def self.search(search,word)
     if search
-      Post.where(['contents LIKE ?', "%#{search}%"])
+      @post = Post.where(['contents LIKE ?', "%#{search}%"])
     else
-      Post.all
+      @post = Post.all
     end
   end
   
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
   
 end

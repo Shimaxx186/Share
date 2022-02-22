@@ -35,9 +35,9 @@ class User < ApplicationRecord
   
   def self.search(search)
     if search
-      User.where(['name LIKE ?', "%#{search}%"])
+      @user = User.where(['name LIKE ?', "%#{search}%"])
     else
-      User.all
+      @user = User.all
     end
   end
   

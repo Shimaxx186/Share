@@ -69,11 +69,11 @@ gem 'refile-mini_magick'
 gem 'kaminari','~> 1.2.1'
 #環境変数化
 gem 'dotenv-rails'
+#googleMap
+gem "gmaps4rails"
+gem "geocoder"
+
 group :production do
   gem 'mysql2'
 end
 
-#googleMap
-#gem "gmaps4rails"
-#gem "geocoder"
-#gem "gon"

@@ -101,8 +101,10 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    geocoder (1.7.3)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    gmaps4rails (2.1.2)
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
@@ -281,6 +283,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass
+  geocoder
+  gmaps4rails
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 1.2.1)

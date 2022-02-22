@@ -1,10 +1,16 @@
 
-<%= form_with url: search_path, local: true, method: :get do |form| %>
-  <%= form.text_field :search, placeholder: "投稿を検索する" %>
-  <%= form.submit "検索"%>
+<%= form_with url: search_path, local: true, method: :get do |f| %>
+  <%= f.text_field :search, placeholder: "投稿を検索する" %>
+  <%= select_tag 'range', options_for_select([['---選択してください---', ''], ['User', '1'], ['投稿', '2']]) %>
+  <%= f.submit "検索"%>
 <% end %>
 
 <div>
-    <% posts.each do |post| %>
-     <%= render "posts/list", posts: @posts %>
+  <% @posts.each do |post| %>
+    <%= link_to user_path(@post.user) do %>
+      <%= attachment_image_tag(@post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+    <% end %>
+      <%= link_to post.user.name, user_path(@post.user) %>
+      <%= link_to post.contents, post_path(@post.id) %>
+  <% end %>
 </div>
