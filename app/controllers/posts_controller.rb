@@ -16,19 +16,20 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post = current_user.posts.new
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to posts_path
+    redirect_to posts_path(@post),notice:'投稿完了しました:)'
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(post_params)
-    redirect_to posts_path
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+      redirect_to post_path(@post.id),notice:'投稿完了しました:)'
   end
 
   def destroy
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+  
 
   private
 

@@ -16,10 +16,13 @@
         <% end %>
       </span>
         <%= render "favorites/like", post: @post %>
+        
         <div>
           <%= attachment_image_tag @post, :image %>
         </div>
     </div>
+    <p>住所</p></br>
+    <p><%= @post.address %></p>
     <script type="text/javascript">
      function initMap() {
        var test = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
@@ -48,7 +51,7 @@
    </script>
    <style type="text/css">
      #map { height: 250px;
-           width: 30%;}
+            width: 30%;}
    </style>
    <div id="map"></div>
 
