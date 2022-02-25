@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   
   resources :users, only: [:index, :show, :edit, :update]
-  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
+  post 'follow/:id' => 'relationships#follow', as: 'follow' 
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' 
 
   resources :posts do
     resources :comments, only: [:create, :destroy]
@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   end
   
   get 'search', to: 'searches#search'
-
+  
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 end

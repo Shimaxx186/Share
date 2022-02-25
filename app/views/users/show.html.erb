@@ -54,6 +54,10 @@
     </p>
   <% end %>
   
+  <% if current_user != @user %>
+    <%= link_to 'chatを始める', chat_path(@user.id)%>
+  <% end %>
+  
 <div>
   <% if user_signed_in? && @user == current_user %>
     <p>投稿一覧</p>
