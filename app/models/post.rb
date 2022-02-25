@@ -13,10 +13,10 @@ class Post < ApplicationRecord
   end
   
   def self.search(searches, words)
-    if search == "perfect_match"
-      @post = Post.where("contents LIKE ?", "#{searches}")
+    if searches == "perfect_match"
+      @post = Post.where("contents LIKE ?", "#{words}")
     else
-      @post = Post.where("contents LIKE ?", "%#{searches}%")
+      @post = Post.where("contents LIKE ?", "%#{words}%")
     end
   end
   

@@ -1,16 +1,23 @@
 <%= form_with url: search_path, method: :get, local: :true do |f| %>
+  <div class = "search-group">
+    <div class ="search-group__field">
       <%= f.select :range, options_for_select([['User'], ['Post']]) %>
       <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
       <%= f.text_field :word %>
       <%= f.submit "検索" %>
+    </div>
 <% end %>
 
-<% if @range == "User" %>
-    <% @users.each do |user| %>
-        <%= user.name %>   　
-    <% end %>
-<% else %>
-    <% @posts.each do |post| %>
-        <%= post.contents %>  　
-    <% end %>
-<% end %>
+<div class ="search-group__list">
+  <% if @range == "User" %>
+      <% @users.each do |user| %>
+          <%= user.name %>   　
+      <% end %>
+  <% else %>
+      <% @posts.each do |post| %>
+          <%= post.contents %>  　
+      <% end %>
+  <% end %>
+</div>
+
+</div>
