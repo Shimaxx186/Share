@@ -16,7 +16,6 @@
         <% end %>
       </span>
         <%= render "favorites/like", post: @post %>
-        
         <div>
           <%= attachment_image_tag @post, :image %>
         </div>
@@ -55,7 +54,15 @@
    </style>
    <div id="map"></div>
 
-    <div class ="post-contents__comment">
+    
+      
+      <%= form_with model:[@post, @comment], local: true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <%= f.text_area :comment, placeholder: "コメントをここに", size: "40x5" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+
+      <div class ="post-contents__comment">
       <p>コメント件数：<%= @post.comments.count %></p>
       <% @post.comments.each do |comment| %>
         <div>
@@ -76,10 +83,6 @@
     <% end %>
     
 
-      <%= form_with model:[@post, @comment], local: true do |f| %>
-        <%= f.text_area :comment, placeholder: "コメントをここに", size: "40x5" %>
-        <%= f.submit "送信する" %>
-      <% end %>
 
     </div>
   </div>
