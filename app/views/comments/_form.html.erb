@@ -1,5 +1,5 @@
 
-<%= form_with(model:[post, comment], local: true) do |f| %>
+<%= form_with(model:[post, comment]) do |f| %>
   <!--エラーメッセージ-->
   <%= render 'layouts/error_messages', model: f.object %>
   <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>

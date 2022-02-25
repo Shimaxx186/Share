@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
     if @comment.save
-      redirect_to post_path(@post), notice: 'コメントを投稿しました'
+      flash.now[:notice] = 'コメントを投稿しました'
+      render :post_comments
     else
       render 'posts/show'
     end
@@ -13,7 +14,9 @@ class CommentsController < ApplicationController
   
   def destroy
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_to post_path(params[:post_id]), alert: 'コメントを削除しました'
+    flash.now[:alert] = 'コメントを削除しました'
+    @post = Post.find(params[:post_id])  
+    render :post_comments
   end
   
   private

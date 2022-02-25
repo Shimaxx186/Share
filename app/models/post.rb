@@ -4,7 +4,6 @@ class Post < ApplicationRecord
   attachment :image
   
   has_many :comments, dependent: :destroy
-# vaildates :contents, presence: true
 
   has_many :favorites, dependent: :destroy
   
