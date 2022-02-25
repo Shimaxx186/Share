@@ -5,6 +5,11 @@
     <h1><%= @user.name %>さんのページ</h1>
   <% end %>
 </div>
+<% if !(user.name == "guestuser") %>
+<div class='row'>
+  <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+</div>
+<% end %>
 
 <% if user_signed_in? && @user == current_user %>
  <p>

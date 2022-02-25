@@ -10,11 +10,11 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy 
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy 
-  has_many :following_user, through: :follower, source: :followed 
-  has_many :follower_user, through: :followed, source: :follower 
-  
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following_user, through: :follower, source: :followed
+  has_many :follower_user, through: :followed, source: :follower
+
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
 
@@ -43,9 +43,9 @@ class User < ApplicationRecord
       @user = User.where("name LIKE ?", "%#{words}%")
     end
   end
-  
+
   def self.guest
-    find_or_create_by!(name: "ゲスト", email: 'guest@example.com') do |user|
+    find_or_create_by!(name: "guestuser", email: 'guestuser@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end
