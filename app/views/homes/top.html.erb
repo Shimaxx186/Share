@@ -1,10 +1,12 @@
-    <div>
-        <%= link_to "Sign up", new_user_registration_path %>
+    <div class = "top-page">
+    <div class = "top-page__signup">
+        <%= link_to "Sign up", new_user_registration_path, class: 'button-signup' %>
     </div>
-    <div>
-        <%= link_to "Login", new_user_session_path %>
+    <div class = "top-page__login">
+        <%= link_to "Login", new_user_session_path, class: 'button-login'  %>
     </div>
-    <div>
-        <%= link_to 'Guset Login（閲覧用）', users_guest_sign_in_path, method: :post %>
+    <div class = "top-page__guest">
+        <%= link_to 'Guset Login（閲覧用）', users_guest_sign_in_path, method: :post, class: 'button-guest' %>
+    </div>
     </div>
 

@@ -48,6 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -66,14 +67,13 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
-gem 'kaminari','~> 1.2.1'
-#環境変数化
+gem 'kaminari', '~> 1.2.1'
+# 環境変数化
 gem 'dotenv-rails'
-#googleMap
+# googleMap
 gem "gmaps4rails"
 gem "geocoder"
 
 group :production do
   gem 'mysql2'
 end
-

@@ -19,11 +19,11 @@ class User < ApplicationRecord
   has_many :chats, dependent: :destroy
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    profile_image.attached? ? profile_image : 'no_image.jpg'
   end
 
   def follow(user_id)
-  follower.create(followed_id: user_id)
+    follower.create(followed_id: user_id)
   end
 
   # ユーザーのフォローを外す
@@ -49,5 +49,4 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
-
 end

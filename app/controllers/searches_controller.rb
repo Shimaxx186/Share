@@ -1,11 +1,10 @@
 class SearchesController < ApplicationController
-
   def search
     @users = []
     @posts = []
     if params[:word].present?
 
-       @range = params[:range]
+      @range = params[:range]
 
       if @range == "User"
         @users = User.search(params[:search], params[:word])
