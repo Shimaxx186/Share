@@ -5,7 +5,7 @@
   <% end %>
 
   <div class="user-info">
-  <% if user_signed_in? && @user == current_user || @user.name == "guestuser"%>
+  <% if user_signed_in? && @user == current_user && @user.name != "guestuser"%>
    <p>
      <%= link_to "編集ページへ",edit_user_path(@user), class: "fas fa-user-cog edit_user_#{@user.id}" %>
    </p>
