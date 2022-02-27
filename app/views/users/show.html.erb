@@ -1,64 +1,31 @@
-<div>
   <% if user_signed_in? && @user == current_user %>
-    <h1>マイページ</h1>
+    <h1 class="index">マイページ</h1>
   <% else %>
-    <h1><%= @user.name %>さんのページ</h1>
+    <h1 class="index"><%= @user.name %>さんのページ</h1>
   <% end %>
-</div>
 
-<% if user_signed_in? && @user == current_user || @user.name == "guestuser"%>
- <p>
-   <%= link_to "プロフィール編集", edit_user_path(@user), class: "fas fa-user-cog edit_user_#{@user.id}" %>
- </p>
- <% end %>
- <div>
-   <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
-   <h4><%= @user.introduction %></h4>
- </div>
- 
-<h2>ユーザー詳細ページ</h2>
-<p><%= "id: #{@user.id}" %></p>
-<p><%= "フォロー数: #{@user.follower.count}" %></p>
-<p><%= "フォロワー数: #{@user.followed.count}" %></p>
-<% unless @user == current_user %>
-  <% if current_user.following?(@user) %>
-    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
-  <% else %>
-    <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
-  <% end %>
-<% end %>
-<p></p>
+  <div class="user-info">
+  <% if user_signed_in? && @user == current_user || @user.name == "guestuser"%>
+   <p>
+     <%= link_to "編集ページへ",edit_user_path(@user), class: "fas fa-user-cog edit_user_#{@user.id}" %>
+   </p>
+   <% end %>
+     <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
+     <h4><%= @user.introduction %></h4>
 
-<h3>フォロー一覧</h3>
-  <% @user.following_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "id: #{user.id} email: #{user.email}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+    <%= render "relationships/follow", user: @user %>
+
+    <h3>follows</h3>
+    <%= link_to  "フォロー数: #{@user.follower.count}", user_followings_path(@user) %>
+
+    <h3>followers</h3>
+    <%= link_to  "フォロワー数: #{@user.followed.count}", user_followers_path(@user) %>
+    <div class="user-info__chat">
+      <% if current_user != @user %>
+        <%= link_to 'chatを始める', chat_path(@user.id), class: "botton-send" %>
       <% end %>
-      <%= link_to "show", user_path(user) %>
-    </p>
-  <% end %>
-<h3>フォロワー一覧</h3>
-  <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "id: #{user.id} email: #{user.email}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "show", user_path(user) %>
-    </p>
-  <% end %>
-  
-  <% if current_user != @user %>
-    <%= link_to 'chatを始める', chat_path(@user.id)%>
-  <% end %>
-  
-<div>
+    </div>
+    <div class ="user-info__post" >
   <% if user_signed_in? && @user == current_user %>
     <p>投稿一覧</p>
   <% else %>
@@ -66,3 +33,6 @@
   <% end %>
   <%= render "posts/list", posts: @posts %>
 </div>
+</div>
+
+

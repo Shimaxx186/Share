@@ -1,11 +1,14 @@
-    <div class = "top-page">
-    <div class = "top-page__signup">
+    <div class = "TopPage">
+    <p class = TopPage__test>新規登録はこちら</p>
+    <div class = "TopPage__signup">
         <%= link_to "Sign up", new_user_registration_path, class: 'button-signup' %>
-    </div>
-    <div class = "top-page__login">
+    </div></br>
+    <p class = TopPage__test>登録がお済の方</p>
+    <div class = "TopPage__login">
         <%= link_to "Login", new_user_session_path, class: 'button-login'  %>
-    </div>
-    <div class = "top-page__guest">
+    </div></br>
+    <p class = TopPage__test>ゲストでログインはこちら</p>
+    <div class = "TopPage__guest">
         <%= link_to 'Guset Login（閲覧用）', users_guest_sign_in_path, method: :post, class: 'button-guest' %>
     </div>
     </div>

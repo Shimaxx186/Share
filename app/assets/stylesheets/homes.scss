@@ -2,14 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.TopPage {
+    text-align: center;
+
+  &__signup {
+    display: inline-block;
+    padding: 0.5em 10em;
+    margin: 0 0 1.5em 0;
+    background: #00FF00;
+
+  }
+  
+  &__login {
+    display: inline-block;
+    padding: 0.5em 10.5em;
+    margin: 0 0 1.5em 0;
+    background: #00FFFF;
+
+  }
+  
+  &__guest {
+    display: inline-block;
+    padding: 0.5em 6.5em;
+    margin: 0 0 1.5em 0;
+    background: #808080;
+  }
+}
+
+.button-signup {
+  margin: 0; 
+  padding: 0;
+  color: #FFFFFF;
+}
+
+.button-login {
+  margin: 0; 
+  padding: 0;
+  color: #FFFFFF;
+}
+
 .button-guest {
-  display       : inline-block;
-  border-radius : 20%;          /* 角丸       */
-  font-size     : 15pt;        /* 文字サイズ */
-  text-align    : center;      /* 文字位置   */
-  padding       : 12px 12px;   /* 余白       */
-  background    : #0F0;     /* 背景色     */
-  color         : #ffffff;     /* 文字色     */
-  line-height   : 1em;         /* 1行の高さ  */
-  border        : 2px solid #000000;    /* 枠の指定 */
+  margin: 0; 
+  padding: 0;
+  color: #FFFFFF;
 }

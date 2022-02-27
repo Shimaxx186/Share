@@ -22,19 +22,20 @@ class User < ApplicationRecord
     profile_image.attached? ? profile_image : 'no_image.jpg'
   end
 
-  def follow(user_id)
-    follower.create(followed_id: user_id)
+  def follow(user)
+    follower.create(followed_id: user.id)
   end
 
   # ユーザーのフォローを外す
-  def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+  def unfollow(user)
+    follower.find_by(followed_id: user.id).destroy
   end
 
   # フォローしていればtrueを返す
-  def following?(user)
+  def followings?(user)
     following_user.include?(user)
   end
+
 
   def self.search(searches, words)
     if searches == "perfect_match"

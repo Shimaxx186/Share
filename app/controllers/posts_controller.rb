@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(3)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show
@@ -21,8 +21,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path(@post), notice: '投稿完了しました'
+    if @post.save
+      redirect_to posts_path(@post), notice: '投稿完了しました'
+    else
+      render :new
+    end
   end
 
   def update

@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//index
 .page a, .next a, .last a, .first a, .prev a {
   color: black;
   margin-left: 10px;
@@ -16,16 +17,14 @@
   font-weight: bold;
 }
 
-.post-index {
-  text-align: center;
-}
 
 .post-top {
     text-align: center;
-    display: flex;
+    // display: flex;
 
   &__list {
     margin: 0 auto;
+    padding: 15px 0;
   }
 }
 
@@ -35,13 +34,24 @@
   
 }
 
+//new
 .form {
-  display: flex;
-  justify-content: center;
-}
-
-.form-bottom {
+  // display: flex;
+  // justify-content: center;
   text-align: center;
+  
+  .form-group {
+    padding: 10px 0;
+    
+    &__text {
+      padding: 0.5em 1em;
+      margin: 2em 0;
+      color: #232323;
+      background: #fff8e8;
+      border-left: solid 10px #ffc06e;
+    }
+    
+  }
 }
 
 .post-contents {
