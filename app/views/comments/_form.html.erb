@@ -2,6 +2,6 @@
 <%= form_with(model:[post, comment]) do |f| %>
   <!--エラーメッセージ-->
   <%= render 'layouts/error_messages', model: f.object %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: "post-contens", size: "40x10" %><br>
+  <%= f.submit "送信する", class: "botton-send" %>
 <% end %>

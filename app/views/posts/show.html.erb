@@ -1,18 +1,18 @@
 <h1 class="index">投稿詳細</h1>
   <div class ="post-contents">
     <div class ="post-contents__show">
-      <div>
         <%= link_to user_path(@post.user) do %>
         <%= attachment_image_tag(@post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
         <% end %>
         <%= link_to @post.user.name, user_path(@post.user) %>
+      <div class ="post-contents__show--contents">
+        <%= @post.contents %>
       </div>
-      <div><%= @post.contents %></div>
       <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
       <span>
         <% if @post.user == current_user %>
-        <%= link_to '編集', edit_post_path(@post.id), method: :get %>
-        <%= link_to "削除", post_path(@post), method: :delete %>
+        <%= link_to '編集', edit_post_path(@post.id), method: :get, class: "botton-show" %>
+        <%= link_to "削除", post_path(@post), method: :delete, class: "botton-delete"%>
         <% end %>
       </span>
         <%= render "favorites/like", post: @post %>
@@ -20,7 +20,6 @@
           <%= attachment_image_tag @post, :image %>
         </div>
     </div>
-    <p>住所</p></br>
     <p><%= @post.address %></p>
     <script type="text/javascript">
      function initMap() {
@@ -50,7 +49,7 @@
    </script>
    <style type="text/css">
      #map { height: 250px;
-            width: 30%;}
+            width: 100%;}
    </style>
    <div id="map"></div>
 
@@ -62,7 +61,6 @@
     <div id="comments_area"> 
       <%= render 'comments/post_comments', post: @post %>
     </div>
-  </div>
   </div>
 
   

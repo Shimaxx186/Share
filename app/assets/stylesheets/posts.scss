@@ -36,8 +36,6 @@
 
 //new
 .form {
-  // display: flex;
-  // justify-content: center;
   text-align: center;
   
   .form-group {
@@ -53,21 +51,20 @@
     
   }
 }
-
+//show
 .post-contents {
-  display: flex;
-  justify-content: center;
-  
-  &__show {
-    text-align: center;
-    padding-right: 50px;
+  text-align: center;
+ 
+  &__show--contents {
+    margin: 25px 0;
   }
-  
-  &__comment {
-    margin-left: 50px;
   }
-}
 
 .post-back {
   text-align: center;
 }
+
+.new-comment {
+  margin: 20px 0;
+}
+
