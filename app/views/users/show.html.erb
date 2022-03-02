@@ -24,14 +24,6 @@
         <%= link_to 'chatを始める', chat_path(@user.id), class: "botton-send" %>
       <% end %>
     </div>
-    <div class ="user-info__post" >
-  <% if user_signed_in? && @user == current_user %>
-    <p>投稿一覧</p>
-  <% else %>
-    <p><%= @user.name %>さんの投稿一覧</p>
-  <% end %>
-  <%= render "posts/list", posts: @posts %>
-</div>
 </div>
 
 
