@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:post) { FactoryBot.build(:post) } 
+  let(:post) { FactoryBot.build(:post) }
 
   describe '投稿の保存' do
     context '投稿できる場合' do
@@ -9,10 +9,11 @@ RSpec.describe Post, type: :model do
         expect(post).to be_valid
       end
       it 'テキストがあれば投稿できる' do
-        tweet.image.purge  
+        tweet.image.purge
         expect(post).to be_valid
       end
     end
+
     context '投稿できない場合' do
       it 'テキストが空では投稿できない' do
         post.text = ''

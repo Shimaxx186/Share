@@ -5,25 +5,25 @@
   <% end %>
 
   <div class="user-info">
-  <% if user_signed_in? && @user == current_user && @user.name != "guestuser"%>
-   <p>
-     <%= link_to "編集ページへ",edit_user_path(@user), class: "fas fa-user-cog edit_user_#{@user.id}" %>
-   </p>
-   <% end %>
-     <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
-
-    <%= render "relationships/follow", user: @user %>
-
-    <h3>follows</h3>
-    <%= link_to  "フォロー数: #{@user.follower.count}", user_followings_path(@user) %>
-
-    <h3>followers</h3>
-    <%= link_to  "フォロワー数: #{@user.followed.count}", user_followers_path(@user) %>
-    <div class="user-info__chat">
-      <% if current_user != @user %>
-        <%= link_to 'chatを始める', chat_path(@user.id), class: "botton-send" %>
-      <% end %>
-    </div>
-</div>
-
+    <% if user_signed_in? && @user == current_user && @user.name != "guestuser"%>
+     <p>
+       <%= link_to "編集ページへ",edit_user_path(@user), class: "fas fa-user-cog edit_user_#{@user.id}" %>
+     </p>
+     <% end %>
+       <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.jpg" %>
+  
+      <%= render "relationships/follow", user: @user %>
+  
+      <h3>follows</h3>
+      <%= link_to  "フォロー数: #{@user.follower.count}", user_followings_path(@user) %>
+  
+      <h3>followers</h3>
+      <%= link_to  "フォロワー数: #{@user.followed.count}", user_followers_path(@user) %>
+      <div class="user-info__chat">
+        <% if current_user != @user %>
+          <%= link_to 'chatを始める', chat_path(@user.id), class: "botton-send" %>
+        <% end %>
+      </div>
+  </div>
+  
 
