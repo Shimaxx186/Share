@@ -27,6 +27,11 @@
   text-align: center;
 }
 
+.alert {
+  color: red;
+  text-align: center;
+}
+
 header {
   padding: 15px 0;
   margin: 0 auto;
@@ -55,7 +60,7 @@ nav {
 // Login-page
 .contner {
   text-align: center;
-  
+
   &__field {
     margin-bottom: 10px;
   }
@@ -94,7 +99,7 @@ nav {
   padding: 0.5em 1em;
   margin: 2em 0.5em;
   color: #FF0000;
-  
+
 }
 //詳細
 .botton-show {
