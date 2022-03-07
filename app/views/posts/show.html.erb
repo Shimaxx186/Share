@@ -17,7 +17,7 @@
       </span>
         <%= render "favorites/like", post: @post %>
         <div>
-          <%= attachment_image_tag @post, :image %>
+          <%= attachment_image_tag @post, :image, :fill, 500, 300 %>
         </div>
     </div>
     <p><%= @post.address %></p>
