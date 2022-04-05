@@ -1,6 +1,7 @@
 
 <nav>
   <ul class="nav-list">
+    
     <% if user_signed_in? %>
       <li class="nav-list-item">
         <%= link_to 'List', posts_path %>
@@ -18,5 +19,6 @@
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       </li>
     <% end %>
+    
   </ul>
 </nav>

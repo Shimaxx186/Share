@@ -44,18 +44,18 @@ header {
 }
 
 nav {
-  
+
   display: inline-block;
   position: left;
   .nav-list {
-    // text-align: center;
+    text-align: center;
     padding: 30px 0;
     margin: 0 auto;
-    
+
 
     .nav-list-item {
       list-style: none;
-      // display: inline-block;
+      display: inline-block;
       padding: 30px 0;
       margin: 0 20px;
       color: bl;
